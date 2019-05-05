@@ -98,6 +98,11 @@ class Lab04Test {
         assertArrayEquals(arrExpected.toArray(), Lab04.getDels(1).toArray());
     }
 
+    @Test //ExceptionCase
+    void getDelsTest5() {
+        assertThrows(Exception.class, () -> Lab04.getDels(0) );
+    }
+
     @Test
     void getProbableRootsTest1() {
         ArrayList<Double> arrExpected = new ArrayList<Double>();
