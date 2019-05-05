@@ -10,14 +10,14 @@ class CubeTest {
 
     @Test
     void cubeConstructorTest1() {
-        Cube cobe = new Cube();
-        assertEquals(0, cobe.getEdge());
+        Cube cube = new Cube();
+        assertEquals(0, cube.getEdge());
     }
 
     @Test
     void cubeConstructorTest2() throws Cube.NegativeEdgeException {
-        Cube cobe = new Cube(2.5);
-        assertEquals(2.5, cobe.getEdge());
+        Cube cube = new Cube(2.5);
+        assertEquals(2.5, cube.getEdge());
     }
 
     @Test //ExceptionCase
@@ -27,29 +27,29 @@ class CubeTest {
 
     @Test
     void edgeGetterSetterTest1() throws Cube.NegativeEdgeException {
-        Cube cobe = new Cube();
-        cobe.setEdge(3.22);
-        assertEquals(3.22, cobe.getEdge());
+        Cube cube = new Cube();
+        cube.setEdge(3.22);
+        assertEquals(3.22, cube.getEdge());
     }
 
     @Test
     void edgeGetterSetterTest2() throws Cube.NegativeEdgeException {
-        Cube cobe = new Cube();
-        cobe.setEdge(1.);
-        assertEquals(1., cobe.getEdge());
+        Cube cube = new Cube();
+        cube.setEdge(1.);
+        assertEquals(1., cube.getEdge());
     }
 
     @Test //ExceptionCase
     void edgeGetterSetterTest3() {
-        Cube cobe = new Cube();
-        assertThrows(Cube.NegativeEdgeException.class, () -> cobe.setEdge(-2.));
+        Cube cube = new Cube();
+        assertThrows(Cube.NegativeEdgeException.class, () -> cube.setEdge(-2.));
     }
 
     @Test
     void getVolumeTest1() throws Cube.NegativeEdgeException {
-        Cube cobe = new Cube(2.4);
+        Cube cube = new Cube(2.4);
         boolean isEq = false;
-        if (Math.abs(34.56 - cobe.getVolume()) < accuracy) {
+        if (Math.abs(34.56 - cube.getVolume()) < accuracy) {
             isEq = true;
         }
         assertEquals(true, isEq);
@@ -57,9 +57,9 @@ class CubeTest {
 
     @Test
     void getVolumeTest2() throws Cube.NegativeEdgeException {
-        Cube cobe = new Cube(33.7);
+        Cube cube = new Cube(33.7);
         boolean isEq = false;
-        if (Math.abs(6814.14 - cobe.getVolume()) < accuracy) {
+        if (Math.abs(6814.14 - cube.getVolume()) < accuracy) {
             isEq = true;
         }
         assertEquals(true, isEq);
@@ -67,9 +67,9 @@ class CubeTest {
 
     @Test
     void getVolumeTest3() throws Cube.NegativeEdgeException {
-        Cube cobe = new Cube(8);
+        Cube cube = new Cube(8);
         boolean isEq = false;
-        if (Math.abs(384 - cobe.getVolume()) < accuracy) {
+        if (Math.abs(384 - cube.getVolume()) < accuracy) {
             isEq = true;
         }
         assertEquals(true, isEq);
@@ -77,9 +77,9 @@ class CubeTest {
 
     @Test
     void getDiagonalTest1() throws Cube.NegativeEdgeException {
-        Cube cobe = new Cube(3);
+        Cube cube = new Cube(3);
         boolean isEq = false;
-        if (Math.abs(5.196 - cobe.getDiagonal()) < accuracy) {
+        if (Math.abs(5.196 - cube.getDiagonal()) < accuracy) {
             isEq = true;
         }
         assertEquals(true, isEq);
@@ -87,9 +87,9 @@ class CubeTest {
 
     @Test
     void getDiagonalTest2() throws Cube.NegativeEdgeException {
-        Cube cobe = new Cube(4.9);
+        Cube cube = new Cube(4.9);
         boolean isEq = false;
-        if (Math.abs(8.487 - cobe.getDiagonal()) < accuracy) {
+        if (Math.abs(8.487 - cube.getDiagonal()) < accuracy) {
             isEq = true;
         }
         assertEquals(true, isEq);
@@ -97,9 +97,9 @@ class CubeTest {
 
     @Test
     void getDiagonalTest3() throws Cube.NegativeEdgeException {
-        Cube cobe = new Cube(212.4);
+        Cube cube = new Cube(212.4);
         boolean isEq = false;
-        if (Math.abs(367.887 - cobe.getDiagonal()) < accuracy) {
+        if (Math.abs(367.887 - cube.getDiagonal()) < accuracy) {
             isEq = true;
         }
         assertEquals(true, isEq);
