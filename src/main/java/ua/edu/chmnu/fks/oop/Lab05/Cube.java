@@ -1,5 +1,7 @@
 package ua.edu.chmnu.fks.oop.Lab05;
 
+import ua.edu.chmnu.fks.oop.Lab05.Exceptions.*;
+
 public class Cube {
 
     private double edge;
@@ -30,18 +32,4 @@ public class Cube {
     public double getDiagonal() {
         return Math.sqrt(3) * edge;
     }
-
-    //CubeExceptions
-    public class CubeException extends Exception {
-        public CubeException(String message) {
-            super(message);
-        }
-    }
-
-    public class NegativeEdgeException extends CubeException {
-        public NegativeEdgeException(String message) {
-            super(message);
-        }
-    }
-    //CubeExceptions
 }

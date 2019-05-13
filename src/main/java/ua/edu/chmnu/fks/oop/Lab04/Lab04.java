@@ -58,7 +58,7 @@ public class Lab04 {
         return pr;
     }
 
-    public static void schemeGornerRec(ArrayList<Integer> cof, ArrayList<Double> pr, ArrayList<Double> roots, Integer indexRoot) {
+    private static void schemeGornerRec(ArrayList<Integer> cof, ArrayList<Double> pr, ArrayList<Double> roots, Integer indexRoot) {
         if (cof.size() == 1) {
             return;
         }
