@@ -2,15 +2,19 @@ package ua.edu.chmnu.fks.oop.Lab09;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FileSameDoubleSearcherTest {
 
+    final String resultPath = "target\\test-classes\\ua\\edu\\chmnu\\fks\\oop\\Lab09\\result.txt";
     FileSameDoubleSearcher fileSameDoubleSearcher;
 
     {
         try {
-            fileSameDoubleSearcher = new FileSameDoubleSearcher("src\\test\\java\\ua\\edu\\chmnu\\fks\\oop\\Lab09\\numbers.txt", "target\\test-classes\\ua\\edu\\chmnu\\fks\\oop\\Lab09\\result.txt", 8);
+            fileSameDoubleSearcher = new FileSameDoubleSearcher("src\\test\\java\\ua\\edu\\chmnu\\fks\\oop\\Lab09\\numbers.txt", resultPath, 8);
         }
         catch (Exception ex) {}
     }
@@ -23,6 +27,15 @@ class FileSameDoubleSearcherTest {
     @Test
     void searchTest() throws Exception {
         assertDoesNotThrow(() -> fileSameDoubleSearcher.search());
+        try(BufferedReader reader = new BufferedReader(new FileReader(resultPath))) {
+            assertEquals("Results:", reader.readLine());
+            assertEquals("2212.34 = 2212.34", reader.readLine());
+            assertEquals("24.7234 = -24.7234", reader.readLine());
+            assertEquals("34.1834 = 34.1834", reader.readLine());
+        }
+        catch (Exception ex) {
+            throw ex;
+        }
     }
 
     @Test
