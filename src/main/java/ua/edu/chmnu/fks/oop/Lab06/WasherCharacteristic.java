@@ -118,4 +118,45 @@ public class WasherCharacteristic extends ApplianceCharacteristic {
     public int getCountOfDrums() {
         return countOfDrums;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof WasherCharacteristic)) return false;
+
+        WasherCharacteristic that = (WasherCharacteristic) o;
+
+        if (getMaxWeightOfLinenKg() != that.getMaxWeightOfLinenKg()) return false;
+        if (getWaterConsumptionL() != that.getWaterConsumptionL()) return false;
+        if (getCountOfProgram() != that.getCountOfProgram()) return false;
+        if (getSpinSpeedMin() != that.getSpinSpeedMin()) return false;
+        if (getCountOfDrums() != that.getCountOfDrums()) return false;
+        if (getWashClass() != that.getWashClass()) return false;
+        return getSpinClass() == that.getSpinClass();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getMaxWeightOfLinenKg();
+        result = 31 * result + getWaterConsumptionL();
+        result = 31 * result + getWashClass().hashCode();
+        result = 31 * result + getSpinClass().hashCode();
+        result = 31 * result + getCountOfProgram();
+        result = 31 * result + getSpinSpeedMin();
+        result = 31 * result + getCountOfDrums();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "WasherCharacteristic{" +
+                "maxWeightOfLinenKg=" + maxWeightOfLinenKg +
+                ", waterConsumptionL=" + waterConsumptionL +
+                ", washClass=" + washClass +
+                ", spinClass=" + spinClass +
+                ", countOfProgram=" + countOfProgram +
+                ", spinSpeedMin=" + spinSpeedMin +
+                ", countOfDrums=" + countOfDrums +
+                '}';
+    }
 }

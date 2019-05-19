@@ -77,4 +77,38 @@ public class Triangle implements IFigure {
     public double perimeter() {
         return a + b + c;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Triangle)) return false;
+
+        Triangle triangle = (Triangle) o;
+
+        if (Double.compare(triangle.getA(), getA()) != 0) return false;
+        if (Double.compare(triangle.getB(), getB()) != 0) return false;
+        return Double.compare(triangle.getC(), getC()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(getA());
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(getB());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(getC());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Triangle{" +
+                "a=" + a +
+                ", b=" + b +
+                ", c=" + c +
+                '}';
+    }
 }

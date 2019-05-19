@@ -50,4 +50,34 @@ public class Rhombus implements IFigure {
     public double perimeter() {
         return 4 * a;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Rhombus)) return false;
+
+        Rhombus rhombus = (Rhombus) o;
+
+        if (Double.compare(rhombus.getA(), getA()) != 0) return false;
+        return Double.compare(rhombus.getAlpha(), getAlpha()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(getA());
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(getAlpha());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Rhombus{" +
+                "a=" + a +
+                ", alpha=" + alpha +
+                '}';
+    }
 }

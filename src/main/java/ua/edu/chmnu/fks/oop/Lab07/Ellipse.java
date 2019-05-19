@@ -43,4 +43,34 @@ public class Ellipse implements IFigure {
     public double perimeter() {
         return 2 * Math.PI * Math.sqrt((a * a + b * b)/2);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Ellipse)) return false;
+
+        Ellipse ellipse = (Ellipse) o;
+
+        if (Double.compare(ellipse.getA(), getA()) != 0) return false;
+        return Double.compare(ellipse.getB(), getB()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(getA());
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(getB());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Ellipse{" +
+                "a=" + a +
+                ", b=" + b +
+                '}';
+    }
 }

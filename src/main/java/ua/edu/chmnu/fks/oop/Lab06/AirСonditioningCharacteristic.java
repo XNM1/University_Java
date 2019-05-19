@@ -84,4 +84,39 @@ public class AirСonditioningCharacteristic extends ApplianceCharacteristic {
     public int getHeatProductivityBTU() {
         return heatProductivityBTU;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AirСonditioningCharacteristic)) return false;
+
+        AirСonditioningCharacteristic that = (AirСonditioningCharacteristic) o;
+
+        if (getFloorArea() != that.getFloorArea()) return false;
+        if (getColdProductivityBTU() != that.getColdProductivityBTU()) return false;
+        if (getHeatProductivityBTU() != that.getHeatProductivityBTU()) return false;
+        if (getCompressorType() != that.getCompressorType()) return false;
+        return getFreonType().equals(that.getFreonType());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getCompressorType().hashCode();
+        result = 31 * result + getFloorArea();
+        result = 31 * result + getFreonType().hashCode();
+        result = 31 * result + getColdProductivityBTU();
+        result = 31 * result + getHeatProductivityBTU();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "AirСonditioningCharacteristic{" +
+                "compressorType=" + compressorType +
+                ", floorArea=" + floorArea +
+                ", freonType='" + freonType + '\'' +
+                ", coldProductivityBTU=" + coldProductivityBTU +
+                ", heatProductivityBTU=" + heatProductivityBTU +
+                '}';
+    }
 }

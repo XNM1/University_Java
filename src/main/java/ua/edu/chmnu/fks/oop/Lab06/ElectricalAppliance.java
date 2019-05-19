@@ -107,4 +107,42 @@ public class ElectricalAppliance {
     public ApplianceType getApplianceType() {
         return applianceType;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ElectricalAppliance)) return false;
+
+        ElectricalAppliance that = (ElectricalAppliance) o;
+
+        if (!getName().equals(that.getName())) return false;
+        if (!getPhysicalCharacteristics().equals(that.getPhysicalCharacteristics())) return false;
+        if (!getElectricalCharacteristic().equals(that.getElectricalCharacteristic())) return false;
+        if (!getApplianceCharacteristic().equals(that.getApplianceCharacteristic())) return false;
+        if (getSizeType() != that.getSizeType()) return false;
+        return getApplianceType() == that.getApplianceType();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName().hashCode();
+        result = 31 * result + getPhysicalCharacteristics().hashCode();
+        result = 31 * result + getElectricalCharacteristic().hashCode();
+        result = 31 * result + getApplianceCharacteristic().hashCode();
+        result = 31 * result + getSizeType().hashCode();
+        result = 31 * result + getApplianceType().hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ElectricalAppliance{" +
+                "name='" + name + '\'' +
+                ", physicalCharacteristics=" + physicalCharacteristics +
+                ", electricalCharacteristic=" + electricalCharacteristic +
+                ", applianceCharacteristic=" + applianceCharacteristic +
+                ", sizeType=" + sizeType +
+                ", applianceType=" + applianceType +
+                '}';
+    }
 }

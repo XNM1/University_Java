@@ -34,4 +34,34 @@ public class ElectricalCharacteristic {
     public double getPower() {
         return power;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ElectricalCharacteristic)) return false;
+
+        ElectricalCharacteristic that = (ElectricalCharacteristic) o;
+
+        if (Double.compare(that.getVoltage(), getVoltage()) != 0) return false;
+        return Double.compare(that.getPower(), getPower()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(getVoltage());
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(getPower());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ElectricalCharacteristic{" +
+                "voltage=" + voltage +
+                ", power=" + power +
+                '}';
+    }
 }

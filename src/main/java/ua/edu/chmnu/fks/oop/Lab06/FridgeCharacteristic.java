@@ -73,4 +73,36 @@ public class FridgeCharacteristic extends ApplianceCharacteristic {
     public int getFreezerVolumeL() {
         return freezerVolumeL;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FridgeCharacteristic)) return false;
+
+        FridgeCharacteristic that = (FridgeCharacteristic) o;
+
+        if (getCountOfChamber() != that.getCountOfChamber()) return false;
+        if (getRefrigeratorVolumeL() != that.getRefrigeratorVolumeL()) return false;
+        if (getFreezerVolumeL() != that.getFreezerVolumeL()) return false;
+        return getCompressorType() == that.getCompressorType();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getCountOfChamber();
+        result = 31 * result + getCompressorType().hashCode();
+        result = 31 * result + getRefrigeratorVolumeL();
+        result = 31 * result + getFreezerVolumeL();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "FridgeCharacteristic{" +
+                "countOfChamber=" + countOfChamber +
+                ", compressorType=" + compressorType +
+                ", refrigeratorVolumeL=" + refrigeratorVolumeL +
+                ", freezerVolumeL=" + freezerVolumeL +
+                '}';
+    }
 }

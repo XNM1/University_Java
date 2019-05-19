@@ -52,4 +52,36 @@ public class PhysicalCharacteristics {
     public Size getSize() {
         return size;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PhysicalCharacteristics)) return false;
+
+        PhysicalCharacteristics that = (PhysicalCharacteristics) o;
+
+        if (Double.compare(that.getWeight(), getWeight()) != 0) return false;
+        if (!getColor().equals(that.getColor())) return false;
+        return getSize().equals(that.getSize());
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = getColor().hashCode();
+        temp = Double.doubleToLongBits(getWeight());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + getSize().hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "PhysicalCharacteristics{" +
+                "color=" + color +
+                ", weight=" + weight +
+                ", size=" + size +
+                '}';
+    }
 }

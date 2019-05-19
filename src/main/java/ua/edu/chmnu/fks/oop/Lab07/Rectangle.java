@@ -43,4 +43,34 @@ public class Rectangle implements IFigure {
     public double perimeter() {
         return 2 * (a + b);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Rectangle)) return false;
+
+        Rectangle rectangle = (Rectangle) o;
+
+        if (Double.compare(rectangle.getA(), getA()) != 0) return false;
+        return Double.compare(rectangle.getB(), getB()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(getA());
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(getB());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "a=" + a +
+                ", b=" + b +
+                '}';
+    }
 }

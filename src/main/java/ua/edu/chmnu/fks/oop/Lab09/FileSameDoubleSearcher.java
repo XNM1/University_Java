@@ -100,4 +100,39 @@ public class FileSameDoubleSearcher {
             throw ex;
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FileSameDoubleSearcher)) return false;
+
+        FileSameDoubleSearcher that = (FileSameDoubleSearcher) o;
+
+        if (Double.compare(that.getAccuracy(), getAccuracy()) != 0) return false;
+        if (getCountOfSymbInLine() != that.getCountOfSymbInLine()) return false;
+        if (!getFileReadPath().equals(that.getFileReadPath())) return false;
+        return getFileWritePath().equals(that.getFileWritePath());
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(getAccuracy());
+        result = (int) (temp ^ (temp >>> 32));
+        result = 31 * result + getFileReadPath().hashCode();
+        result = 31 * result + getFileWritePath().hashCode();
+        result = 31 * result + getCountOfSymbInLine();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "FileSameDoubleSearcher{" +
+                "accuracy=" + accuracy +
+                ", fileReadPath='" + fileReadPath + '\'' +
+                ", fileWritePath='" + fileWritePath + '\'' +
+                ", countOfSymbInLine=" + countOfSymbInLine +
+                '}';
+    }
 }

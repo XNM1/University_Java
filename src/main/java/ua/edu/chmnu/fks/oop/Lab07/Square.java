@@ -30,4 +30,27 @@ public class Square implements IFigure {
     public double perimeter() {
         return 4 * a;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Square)) return false;
+
+        Square square = (Square) o;
+
+        return Double.compare(square.getA(), getA()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        long temp = Double.doubleToLongBits(getA());
+        return (int) (temp ^ (temp >>> 32));
+    }
+
+    @Override
+    public String toString() {
+        return "Square{" +
+                "a=" + a +
+                '}';
+    }
 }

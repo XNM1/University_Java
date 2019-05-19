@@ -32,4 +32,27 @@ public class Cube {
     public double getDiagonal() {
         return Math.sqrt(3) * edge;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cube)) return false;
+
+        Cube cube = (Cube) o;
+
+        return Double.compare(cube.getEdge(), getEdge()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        long temp = Double.doubleToLongBits(getEdge());
+        return (int) (temp ^ (temp >>> 32));
+    }
+
+    @Override
+    public String toString() {
+        return "Cube{" +
+                "edge=" + edge +
+                '}';
+    }
 }

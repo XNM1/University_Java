@@ -62,4 +62,41 @@ public class Size {
     public double getLength() {
         return length;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Size)) return false;
+
+        Size size = (Size) o;
+
+        if (Double.compare(size.getHeight(), getHeight()) != 0) return false;
+        if (Double.compare(size.getWidth(), getWidth()) != 0) return false;
+        if (Double.compare(size.getLength(), getLength()) != 0) return false;
+        return getUnit() == size.getUnit();
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(getHeight());
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(getWidth());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(getLength());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + getUnit().hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Size{" +
+                "height=" + height +
+                ", width=" + width +
+                ", length=" + length +
+                ", unit=" + unit +
+                '}';
+    }
 }

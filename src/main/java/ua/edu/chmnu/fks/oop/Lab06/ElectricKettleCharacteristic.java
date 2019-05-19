@@ -50,4 +50,36 @@ public class ElectricKettleCharacteristic extends ApplianceCharacteristic {
     public boolean isWithIndicator() {
         return withIndicator;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ElectricKettleCharacteristic)) return false;
+
+        ElectricKettleCharacteristic that = (ElectricKettleCharacteristic) o;
+
+        if (Double.compare(that.getVolume(), getVolume()) != 0) return false;
+        if (isWithIndicator() != that.isWithIndicator()) return false;
+        return getBodyMaterial() == that.getBodyMaterial();
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = getBodyMaterial().hashCode();
+        temp = Double.doubleToLongBits(getVolume());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (isWithIndicator() ? 1 : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ElectricKettleCharacteristic{" +
+                "bodyMaterial=" + bodyMaterial +
+                ", volume=" + volume +
+                ", withIndicator=" + withIndicator +
+                '}';
+    }
 }
