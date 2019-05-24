@@ -6,11 +6,11 @@ import java.util.stream.*;
 
 public class PalindromeUtils {
 
-    static public Collection<String> getPolindromeFromCollection(Collection<String> strings, boolean case_sensitive, boolean withSpace) {
+    static public <T extends Collection<String>> List<String> getPolindromeFromCollection(T strings, boolean case_sensitive, boolean withSpace) {
         return strings.stream().filter(s -> isPalindrome(s, case_sensitive, withSpace)).collect(Collectors.toList());
     }
 
-    static public Stream<String> getPolindromeFromStream(Stream<String> strings, boolean case_sensitive, boolean withSpace) {
+    static public <T extends Stream<String>> Stream<String> getPolindromeFromStream(T strings, boolean case_sensitive, boolean withSpace) {
         return strings.filter(s -> isPalindrome(s, case_sensitive, withSpace));
     }
 
